@@ -1,0 +1,4 @@
+Socialist
+=========
+
+Laravel Socialist Packager
