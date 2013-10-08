@@ -1,0 +1,23 @@
+{
+    "name": "tutik/socialist",
+    "description": "",
+    "authors": [
+        {
+            "name": "Tutik Alexsadr",
+            "email": "sanchezzzhak@ya.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "classmap": [
+            ""
+        ],
+        "psr-0": {
+            "Tutik\\Socialist": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
