@@ -1,14 +1,29 @@
 Socialist
 =========
-
 Laravel Socialist Package
 
+Installation
+=======
+You should install this package through Composer.
+
+Edit your project's `composer.json` file to require `tutik/socialist`.
+
+	"require": {
+		"laravel/framework": "4.0.*",
+		"tutik/socialist": "dev-master"
+	},
+	"minimum-stability" : "dev"
+
+Next, update Composer from the Terminal:
+    `composer update`
+
+Once this operation completes, the final step is to add the service provider. Open `app/config/app.php`, and add a new item to the providers array.
+
+  `'Tutik\Socialist\SocialistServiceProvider',`
 
 
-
-
-@Usage 
-
+Usage 
+=======
 Create config file in base folder app
 
 /app/config/api/socialist.php
@@ -37,18 +52,30 @@ return [
 ```
 
 
+Create a controller and use
+
+```php
+<?php
+use \Tutik\Socialist\Socialist;
+
+```
 ```php
 // VKontakte
-Socialist::factory('vk')->api('users.get',[
-  'users_id' => '1,2,3,4,5',
+$response = Socialist::factory('vk')->api('users.get',[
+  'users_id' => '100500',   
   'access_token' => <access_token>,
 ]);
+$response = array_shift($data['response']);
 ```
 
 ```php
 // MailRu
-Socialist::factory('mailru')->api('users.get',[
-  'user_id' => '1,2,3,4,5',
-]);
+$mail = Socialist::factory('mailru');
+if ($uid  = $mail->isAuth()) {
+    $response = $mail->api('users.getInfo', array('uids' => $uid));
+    $response = array_shift($response);   // User Data
+}
 ```
 
+// @TODO Facebook 
+// @TODO Google+
