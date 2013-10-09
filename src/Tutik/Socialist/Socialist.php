@@ -16,9 +16,13 @@ class Socialist {
                 return new Vk($config['vk']);
             case 'mailru':
                 return new MailRu($config['mailru']);
-            case 'fb':
 
-            break;
+            case 'facebook':
+            case 'fb':
+                return new Facebook (
+                    [   'appId'  => $config['fb']['app_id'],
+                        'secret' => $config['fb']['app_key']
+                    ]);
         }
 
     }

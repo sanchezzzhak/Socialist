@@ -57,8 +57,8 @@ Create a controller and use
 ```php
 <?php
 use \Tutik\Socialist\Socialist;
-
 ```
+
 ```php
 // VKontakte
 $response = Socialist::factory('vk')->api('users.get',[
@@ -77,5 +77,21 @@ if ($uid  = $mail->isAuth()) {
 }
 ```
 
-// @TODO Facebook 
+```php
+// Facebook
+$facebook = Socialist::factory('facebook'); // or alias fb
+$user = $facebook->getUser();
+if ($user) {
+  try {
+    $user_profile = $facebook->api('/me');
+  } catch (FacebookApiException $e) {
+    $user = null;
+  }
+}
+```
+
+```php
 // @TODO Google+
+
+
+```
