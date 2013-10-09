@@ -1,4 +1,4 @@
-<?php namespace Tutik\Socialist;
+<?php
 
 /**
  * Класс для работы с VK API

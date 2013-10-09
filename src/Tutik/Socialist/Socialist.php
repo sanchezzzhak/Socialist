@@ -47,6 +47,10 @@ class Socialist {
             'fb'     => 'https://www.facebook.com/dialog/oauth?client_id=' . $config['fb']['app_id'] .
             '&redirect_uri=' .urldecode( $config['fb']['redirect_url'] . '?auth=fb'),
 
+            'google_plus' => 'https://accounts.google.com/o/oauth2/auth?redirect_uri=' . urldecode( $config['google_plus']['redirect_url'] . '?auth=google_plus') .
+                             '&response_type=code&client_id='. $config['google_plus']['app_id'] .'&approval_prompt=force'.
+                             '&scope='. urlencode('https://www.googleapis.com/auth/plus.me') .'&access_type=offline'
+
 
         ];
     }
