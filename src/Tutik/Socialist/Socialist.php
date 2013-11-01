@@ -16,7 +16,9 @@ class Socialist {
                 return new Vk($config['vk']);
             case 'mailru':
                 return new MailRu($config['mailru']);
-
+            case 'tw':
+                return new TwitterOAuth($config['tw']['app_id'],$config['tw']['app_key']);
+            break;
             case 'facebook':
             case 'fb':
                 return new Facebook (
@@ -37,7 +39,6 @@ class Socialist {
         return [
             'vk' => 'http://api.vk.com/oauth/authorize?client_id=' . $config['vk']['app_id'] .
             '&response_type=token'.
-
             '&scope=notify,friends'.
             '&redirect_uri=' . urldecode( $config['vk']['redirect_url'] . '?auth=vk') ,
 
@@ -49,8 +50,9 @@ class Socialist {
 
             'google_plus' => 'https://accounts.google.com/o/oauth2/auth?redirect_uri=' . urldecode( $config['google_plus']['redirect_url'] . '?auth=google_plus') .
                              '&response_type=code&client_id='. $config['google_plus']['app_id'] .'&approval_prompt=force'.
-                             '&scope='. urlencode('https://www.googleapis.com/auth/plus.me') .'&access_type=offline'
+                             '&scope='. urlencode('https://www.googleapis.com/auth/plus.me') .'&access_type=offline',
 
+            'tw' => '/socialist?auth=tw' ,
 
         ];
     }
