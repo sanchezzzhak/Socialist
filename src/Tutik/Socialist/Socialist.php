@@ -1,6 +1,7 @@
 <?php namespace Tutik\Socialist;
 
 
+
 class Socialist {
 
 
@@ -38,9 +39,9 @@ class Socialist {
 
         return [
             'vk' => 'http://api.vk.com/oauth/authorize?client_id=' . $config['vk']['app_id'] .
-            '&response_type=token'.
+            '&response_type=code'.
             '&scope=notify,friends'.
-            '&redirect_uri=' . urldecode( $config['vk']['redirect_url'] . '?auth=vk') ,
+            '&redirect_uri=' . urldecode( $config['vk']['redirect_url']) ,
 
             'mailru' => 'https://connect.mail.ru/oauth/authorize?client_id=' . $config['mailru']['app_id'] .
             '&response_type=code&redirect_uri='. urldecode($config['mailru']['redirect_url'] . '?auth=mailru'),

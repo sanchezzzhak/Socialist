@@ -1,4 +1,5 @@
 <?php
+namespace Tutik\Socialist;
 
 /**
  * Класс для работы с VK API
@@ -18,6 +19,7 @@ class VK {
     protected
         $app_key,
         $app_id,
+        $app_redirect_url,
         $api_url;
 
     /**
@@ -31,6 +33,7 @@ class VK {
     public function __construct($config) {
         $this->app_id = $config['app_id'];
         $this->app_key = $config['app_key'];
+        $this->app_redirect_url = $config['redirect_url'];
         $api_url = !isset($config['api_url']) ? 'api.vk.com/api.php' : $config['api_url'];
         if (!strstr($api_url, 'http://')) $api_url = 'http://'.$api_url;
         $this->api_url = $api_url;
@@ -103,19 +106,34 @@ class VK {
 
     }
 
+
+    public function http($url){
+        $ci = curl_init();
+        /* Curl settings */
+        curl_setopt($ci, CURLOPT_USERAGENT, 'dev-php');
+        curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ci, CURLOPT_TIMEOUT, 20);
+        curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ci, CURLOPT_HTTPHEADER, array('Expect:'));
+        curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false );
+        curl_setopt($ci, CURLOPT_HEADER, false);
+        curl_setopt($ci, CURLOPT_URL, $url);
+        $response = curl_exec($ci);
+        curl_close($ci);
+        return $response;
+    }
+
+
+
     /**
      * Получить по коду access_token
      * @param  string $code секретный код от пользователя...
      * @return  array|false  получаем данные в виде массива или false
      **/
     public function getAccessToken($code){
-        $response = json_decode(file_get_contents('https://api.vk.com/oauth/token?client_id=' . $this->app_id .
-        '&code=' . $code . '&client_secret=' . $this->app_key . '&grant_type=client_credentials'),true);
-
-        if (isset($response['access_token'])) {
-            return $response;
-        }
-        return false;
+        $response = json_decode($this->http('https://api.vk.com/oauth/access_token?client_id=' . $this->app_id .
+        '&client_secret=' . $this->app_key . '&code=' . $code . '&redirect_uri='.  urldecode($this->app_redirect_url)   ),true);
+        return $response;
     }
 
 
