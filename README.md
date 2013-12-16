@@ -9,7 +9,7 @@ You should install this package through Composer.
 Edit your project's `composer.json` file to require `tutik/socialist`.
 
 	"require": {
-		"laravel/framework": "4.0.*",
+		"laravel/framework": "4.x",
 		"tutik/socialist": "dev-master"
 	},
 	"minimum-stability" : "dev"
