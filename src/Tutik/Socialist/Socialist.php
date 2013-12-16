@@ -36,10 +36,9 @@ class Socialist {
     public static function getRegistrationLinks()
     {
         $config =  \Config::get('api/socialist');
-
         return [
             'vk' => 'http://api.vk.com/oauth/authorize?client_id=' . $config['vk']['app_id'] .
-            '&response_type=code'.
+            '&response_type=code'. 
             '&scope=notify,friends'.
             '&redirect_uri=' . urldecode( $config['vk']['redirect_url']) ,
 
