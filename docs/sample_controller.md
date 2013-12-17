@@ -1,4 +1,4 @@
-This is an example LARAVL 4.1 of processing callback from social networking + authorization and registration
+This is an example @Laravel 4.1 of processing callback from social networking + authorization and registration
 
 cmd(bash)  
 php artisan controller:make SocialistController
