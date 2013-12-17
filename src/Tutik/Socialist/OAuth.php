@@ -2,6 +2,12 @@
 
 use Exception;
 
+use OAuthSignatureMethod_HMAC_SHA1;
+use OAuthConsumer;
+use OAuthRequest;
+use OAuthUtil;
+use OAuthException;
+
 /* Generic exception class
  */
 if (! class_exists('OAuthException'))
