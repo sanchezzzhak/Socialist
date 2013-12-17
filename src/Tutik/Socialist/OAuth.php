@@ -1,4 +1,6 @@
-<?php
+<?php namespace Tutik\Socialist;
+
+use Exception;
 
 /* Generic exception class
  */
