@@ -1,12 +1,4 @@
-<?php namespace Tutik\Socialist;
-
-use Exception;
-
-use OAuthSignatureMethod_HMAC_SHA1;
-use OAuthConsumer;
-use OAuthRequest;
-use OAuthUtil;
-use OAuthException;
+<?php 
 
 /* Generic exception class
  */
