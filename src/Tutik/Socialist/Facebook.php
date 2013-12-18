@@ -1,5 +1,5 @@
 <?php namespace Tutik\Socialist;
-
+use Exception;
     /**
      * Copyright 2011 Facebook, Inc.
      *
@@ -1595,20 +1595,3 @@ class Facebook extends BaseFacebook
         return implode('_', $parts);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
